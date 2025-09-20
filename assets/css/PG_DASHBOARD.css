@@ -1,0 +1,136 @@
+    .main-content {
+    margin-left: 256px;
+    min-height: 100vh;
+    }
+
+    .header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px 32px;
+    }
+    
+    .clock-date {
+    font-size: 18px;
+    color: #1f2937;
+    font-weight: 600;
+    position: relative;
+    min-width: 180px;
+    padding-right: 24px;
+    }
+
+    .header-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 4px;
+    }
+
+    .header-subtitle {
+    color: #6b7280;
+    margin: 0;
+    }
+
+    .stats-card {
+    border: none;
+    color: white;
+    border-radius: 12px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .stats-card.blue { background-color: #3b82f6; }
+    .stats-card.green { background-color: #10b981; }
+    .stats-card.purple { background-color: #8b5cf6; }
+    .stats-card.orange { background-color: #f59e0b; }
+
+    .stats-value {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    }
+
+    .stats-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.9;
+    }
+
+    .table-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    }
+
+    .table-header {
+    font-size: 24px;
+    font-weight: 600;
+    color: #374151;
+    padding: 24px;
+    margin: 0;
+    border-bottom: 1px solid #f3f4f6;
+    }
+
+    .scan-visitorsBtn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 8px 16px;
+    }
+
+    .table { margin: 0; }
+    .table thead th {
+    background-color: #f9fafb;
+    color: #6b7280;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    padding: 16px 24px;
+    }
+
+    .table tbody td {
+    padding: 16px 24px;
+    color: #6b7280;
+    vertical-align: middle;
+    }
+
+    .no-visitors {
+    padding: 48px 24px;
+    text-align: center;
+    color: #9ca3af;
+    font-style: italic;
+    }
+    
+    .status-badge {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    }
+
+    .sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    border-top: none;
+    }
+
+    @media (max-width: 768px) {
+    .sidebar { width: 100%; position: relative; min-height: auto; }
+    .main-content { margin-left: 0; }
+    .header { padding: 16px; }
+    .search-container { padding: 16px; }
+    }

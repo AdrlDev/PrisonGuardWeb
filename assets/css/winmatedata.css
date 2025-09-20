@@ -1,0 +1,294 @@
+.main-content {
+    margin-left: 256px;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px 32px;
+}
+
+.header-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.header-subtitle {
+    color: #6b7280;
+    margin: 0;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    border-top: none;
+}
+
+/* Content Area Styles */
+.content-area {
+    padding: 32px;
+}
+
+.inmates-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.inmates-header {
+    background-color: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inmates-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f2937;
+    margin: 0;
+}
+
+.search-section {
+    padding: 24px 32px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.search-container {
+    position: relative;
+    max-width: 400px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px 12px 48px;
+    border: 2px solid #e2e8f0;
+    border-radius: 24px;
+    font-size: 16px;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3730a3;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(55, 48, 163, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 18px;
+}
+
+.create-btn {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.create-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.4);
+    background: linear-gradient(135deg, #047857 0%, #059669 100%);
+}
+
+.table-container {
+    padding: 0;
+}
+
+.inmates-table {
+    width: 100%;
+    margin: 0;
+}
+
+.inmates-table thead th {
+    background-color: #f1f5f9;
+    color: #475569;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 16px 24px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inmates-table tbody td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #374151;
+    vertical-align: middle;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 80px 32px;
+    color: #6b7280;
+    font-size: 18px;
+}
+
+/* Modal Styles */
+.modal-content {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 24px 32px;
+    background-color: #f8fafc;
+    border-radius: 16px 16px 0 0;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2937;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 32px;
+}
+
+.form-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3730a3;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(55, 48, 163, 0.1);
+}
+
+.modal-footer {
+    border-top: 1px solid #e2e8f0;
+    padding: 24px 32px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    background-color: #f8fafc;
+    border-radius: 0 0 16px 16px;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background: linear-gradient(135deg, #047857 0%, #059669 100%);
+    transform: translateY(-1px);
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        min-height: auto;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .header {
+        padding: 16px;
+    }
+    .content-area {
+        padding: 16px;
+    }
+    .inmates-header {
+        padding: 16px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+    .search-section {
+        padding: 16px;
+    }
+    .modal-body {
+        padding: 24px 20px;
+    }
+    .modal-header, .modal-footer {
+        padding: 20px;
+    }
+}

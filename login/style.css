@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+html,body{
+      background: url('../assets/img/magbay.jpg') no-repeat center center fixed;
+     background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+
+}
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:inherit;
+  background-size: cover; 
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+  background-color: rgba(30, 64, 175, 0.25);
+}
+::selection{
+    color: #fff;
+    background: #6665ee;
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.container .form{
+    background: #fff;
+    padding: 30px 35px;
+    border-radius: 9px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container .form form .form-control{
+    height: 40px;
+    font-size: 15px;
+}
+.container .form form .forget-pass{
+    margin: -15px 0 15px 0;
+}
+.container .form form .forget-pass a{
+   font-size: 15px;
+}
+.container .form form .button{
+    background: #6665ee;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.container .form form .button:hover{
+    background: #5757d1;
+}
+.container .form form .link{
+    padding: 5px 0;
+}
+.container .form form .link a{
+    color: #6665ee;
+}
+.container .login-form form p{
+    font-size: 14px;
+}
+.container .row .alert{
+    font-size: 14px;
+}
+.logo {
+    display: block;
+    width: 96px;
+    height: 96px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 16px auto; /* center and add space below */
+    box-shadow: 0 2px 8px rgba(67,56,202,0.08);
+    padding: 8px;
+    text-align: center; /* center content inside */
+}
+.logo img {
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+/* New styles for signup-user.php */
+.form-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-grid .full-width {
+            grid-column: 1 / -1;
+        }
+    
+        .upload-btn {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1rem;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+        .upload-btn:hover {
+            background: #219a52;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+/* Password toggle icon */
+.form-group.position-relative {
+    position: relative;
+}
+
+.form-group.position-relative i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.form-group.position-relative i:hover {
+    color: #0056b3;
+}

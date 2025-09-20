@@ -1,0 +1,353 @@
+        .main-content {
+            margin-left: 256px;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 24px 32px;
+        }
+
+        .header-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .header-subtitle {
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        .sidebar-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+        }
+
+        /* Visitor Cards Styles */
+        .visitor-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .visitor-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .visitor-profile {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 3px solid #f3f4f6;
+        }
+
+        .profile-avatar i {
+            font-size: 32px;
+            color: white;
+        }
+
+        .visitor-info {
+            flex: 1;
+        }
+
+        .visitor-info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .visitor-info-label {
+            font-weight: 600;
+            color: #374151;
+            width: 120px;
+            font-size: 14px;
+        }
+
+        .visitor-info-value {
+            color: #6b7280;
+            font-size: 14px;
+            background-color: #f3f4f6;
+            padding: 6px 12px;
+            border-radius: 6px;
+            flex: 1;
+            margin-left: 8px;
+        }
+
+        .inmate-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .inmate-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .inmate-info {
+            background-color: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #3730a3;
+        }
+
+        /* Visitors Log Table Styles */
+        .content {
+            padding: 32px;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1f2937;
+        }
+
+        .table-description {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .search-section {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 2px solid #3730a3;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4338ca;
+            box-shadow: 0 0 0 4px rgba(55, 48, 163, 0.1);
+            background-color: #fefefe;
+        }
+
+        .search-input::placeholder {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        .visitors-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .visitors-table th,
+        .visitors-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .visitors-table th {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+            background-color: #f9fafb;
+        }
+
+        .visitors-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .visitors-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .visitor-cell {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .visitor-name {
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: #1f2937;
+        }
+
+        .visitor-details {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .time-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .time-entry {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            gap: 6px;
+        }
+
+        .time-in { color: #16a34a; }
+        .time-out { color: #dc2626; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .badge-in-progress {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-completed {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-cancelled {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: #6b7280;
+        }
+
+        .no-search-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: #6b7280;
+            background-color: #f9fafb;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: #d1d5db;
+        }
+
+        .search-icon-large {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: #3730a3;
+        }
+
+        /* Highlight search results */
+        .highlight {
+            background-color: #fef3c7;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                min-height: auto;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .header {
+                padding: 16px;
+            }
+            .content {
+                padding: 16px;
+            }
+            .card-body {
+                padding: 16px;
+            }
+            .visitor-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            .visitor-info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .visitor-info-value {
+                margin-left: 0;
+            }
+            .search-section {
+                flex-direction: column;
+            }
+            .search-container {
+                min-width: auto;
+            }
+            .visitors-table {
+                font-size: 0.875rem;
+            }
+            .visitors-table th,
+            .visitors-table td {
+                padding: 12px 8px;
+            }
+        }
