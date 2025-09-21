@@ -9,11 +9,27 @@ let modal;
 let currentPage = 1;
 const limit = 5; // rows per page
 
+let idNumber = null;
+
 // Show modal and start scanning automatically
 document.getElementById("scanVisitorBtn").addEventListener("click", () => {
-    modal = new bootstrap.Modal(document.getElementById("scannerModal"));
+    const scannerModalEl = document.getElementById("scannerModal");
+    modal = bootstrap.Modal.getOrCreateInstance(scannerModalEl);
     modal.show();
     startCamera();
+});
+
+document.getElementById("savePurposeBtn").addEventListener("click", () => {
+    const purpose = document.getElementById("purposeSelect").value;
+    if (!purpose) {
+        alert("⚠ Please select a purpose of visit.");
+        return;
+    }
+    checkVisitors(idNumber, purpose);
+
+    const purposeModalEl = document.getElementById("purposeModal");
+    const purposeModal = bootstrap.Modal.getOrCreateInstance(purposeModalEl);
+    purposeModal.hide();
 });
 
 // Listen for modal close (user clicks 'x' or outside modal)
@@ -91,9 +107,15 @@ async function sendFramesToServer(frames) {
             success = true;
 
             //add this the php
-            let idNumber = data.id_number;
+            idNumber = data.id_number;
 
-            checkVisitors(idNumber);
+            checkVisitorInLog(idNumber).then(log => {
+                if (log) {
+                    checkVisitors(idNumber, log.purpose);
+                } else {
+                    new bootstrap.Modal(document.getElementById("purposeModal")).show();
+                }
+            });
 
         } else if (data.status === "unknown") {
             alert("⚠ Unknown face detected! Please try again.")
@@ -117,7 +139,7 @@ async function sendFramesToServer(frames) {
     }
 }
 
-async function checkVisitors(idNumber) {
+async function checkVisitors(idNumber, purpose) {
     fetch("../../classes/visitors.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -127,7 +149,7 @@ async function checkVisitors(idNumber) {
         .then(visitorData => {
             console.log("Visitor found in DB:", visitorData);
             if (visitorData.status === "ok") {
-                processVisitors(visitorData.visitor)
+                processVisitors(visitorData.visitor, purpose)
             } else {
                 alert("⚠ Face recognized but visitor not found in database!");
             }
@@ -135,7 +157,7 @@ async function checkVisitors(idNumber) {
         .catch(err => console.error("Visitor lookup error:", err));
 }
 
-async function processVisitors(visitor) {
+async function processVisitors(visitor, purpose) {
     // First try IN
     fetch("../../classes/visitors_log.php", {
         method: "POST",
@@ -145,7 +167,8 @@ async function processVisitors(visitor) {
             visitorsIdNumber: visitor.idNumber,
             inmateToVisit: visitor.inmate,
             relationshipToInmate: visitor.relationship,
-            status: "IN"
+            status: "IN",
+            purpose: purpose   // ✅ add purpose
         })
     })
         .then(res => res.json())
@@ -164,7 +187,8 @@ async function processVisitors(visitor) {
                         visitorsIdNumber: visitor.idNumber,
                         inmateToVisit: visitor.inmate,
                         relationshipToInmate: visitor.relationship,
-                        status: "OUT"
+                        status: "OUT",
+                        purpose: purpose
                     })
                 })
                     .then(res => res.json())
@@ -185,6 +209,30 @@ async function processVisitors(visitor) {
         .catch(err => console.error("Log error:", err));
 }
 
+async function checkVisitorInLog(visitorsIdNumber) {
+    try {
+        const response = await fetch(`../../classes/visitors_log.php?visitorIdNumber=${encodeURIComponent(visitorsIdNumber)}&active=1`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        const data = await response.json();
+
+        if (data.status === "ok" && data.log) {
+            console.log("Visitor IN Logs:", data.log);
+            return data.log; // return array of logs
+        } else {
+            console.warn("Error:", data.message);
+            return null;
+        }
+    } catch (error) {
+        console.error("Fetch error:", error);
+        return null;
+    }
+}
+
 // Fetch visitor logs and update table
 function loadVisitorLogs(page = 1, selectedDate = null) {
     const dateParam = selectedDate
@@ -199,7 +247,7 @@ function loadVisitorLogs(page = 1, selectedDate = null) {
                 tbody.innerHTML = "";
 
                 if (data.logs.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="7" class="no-visitors">No Visitors</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="8" class="no-visitors">No Visitors</td></tr>`;
                 } else {
                     data.logs.forEach(log => {
                         tbody.innerHTML += `
@@ -208,6 +256,7 @@ function loadVisitorLogs(page = 1, selectedDate = null) {
                                 <td>${log.visitorsIdNumber}</td>
                                 <td>${log.inmateToVisit || '-'}</td>
                                 <td>${log.relationshipToInmate || '-'}</td>
+                                <td>${log.purpose || '-'}</td>
                                 <td>
                                     ${log.status === 'IN'
                                 ? `${formatDate(log.timeIn)}`
@@ -222,6 +271,7 @@ function loadVisitorLogs(page = 1, selectedDate = null) {
                     });
                 }
 
+                console.log("API response:", data);
                 // Render pagination
                 renderPagination(data.page, data.totalPages, selectedDate);
             }
@@ -232,14 +282,20 @@ function loadVisitorLogs(page = 1, selectedDate = null) {
 function renderPagination(page, totalPages, selectedDate = null) {
     const pagination = document.getElementById("pagination");
 
-    if (totalPages <= 0) {
-        pagination.style.display = "none"; // hide container
+    // Make sure totalPages is a number
+    totalPages = Number(totalPages);
+
+    // Hide pagination if no pages
+    if (!totalPages || totalPages <= 0) {
+        pagination.innerHTML = "";   // 🔥 clear buttons
+        pagination.style.display = "none";
         return;
     }
 
     pagination.style.display = "block"; // show if pages exist
     pagination.innerHTML = "";
 
+    // Ensure proper JS-safe string handling
     const safeDate = selectedDate ? `'${selectedDate}'` : 'null';
 
     // Previous button
@@ -261,7 +317,6 @@ function renderPagination(page, totalPages, selectedDate = null) {
         <button class="btn btn-sm btn-outline-primary" ${nextDisabled} 
             onclick="loadVisitors(${page + 1}, ${safeDate})">Next</button>`;
 }
-
 
 function loadVisitors(page, selectedDate = null) {
     currentPage = page;

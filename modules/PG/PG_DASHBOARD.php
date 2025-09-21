@@ -106,6 +106,7 @@ require_once '../../database/connection.php';
                                     <th>Id Number</th>
                                     <th>Inmate to Visit</th>
                                     <th>Relationship</th>
+                                    <th>Purpose</th>
                                     <th>Date</th>
                                     <th>Time in</th>
                                     <th>Time out</th>
@@ -157,13 +158,37 @@ require_once '../../database/connection.php';
                         </div>
                     </div>
                 </div>
+
+                <!-- Purpose of Visit Modal -->
+                <div class="modal fade" id="purposeModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Purpose of Visit</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="purposeSelect" class="form-label">Select Purpose</label>
+                                <select id="purposeSelect" class="form-select">
+                                    <option value="" disabled selected>-- Select Purpose --</option>
+                                    <option value="Conjugal">Conjugal</option>
+                                    <option value="PDL Visit">PDL Visit</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="savePurposeBtn" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div> <!-- Close container-fluid -->
         </main>
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <script src="../../assets/js/PG_DASHBOARD.js?v=4"></script>
-        <script src="../../assets/js/videoCamera.js?v=13"></script>
+        <script src="../../assets/js/videoCamera.js?v=28"></script>
 </body>
 
 </html>
